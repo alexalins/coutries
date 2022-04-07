@@ -1,3 +1,3 @@
 package com.example.kotlin.countries.model
 
-data class Data(val name: String?)
+data class Country(val name: String?)
