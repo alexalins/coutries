@@ -1,9 +1,9 @@
 package com.example.kotlin.countries.view
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin.countries.R
 import com.example.kotlin.countries.model.Country
 import kotlinx.android.synthetic.main.item_country.view.*
