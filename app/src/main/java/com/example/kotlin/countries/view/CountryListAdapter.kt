@@ -16,7 +16,7 @@ class CountryListAdapter(var countries: ArrayList<Country>):
     )
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
-        holder.bing(countries[position])
+        holder.bind(countries[position])
     }
 
     override fun getItemCount() = countries.size
@@ -32,7 +32,7 @@ class CountryListAdapter(var countries: ArrayList<Country>):
 
         private val  countryName = view.name
 
-        fun bing(country: Country) {
+        fun bind(country: Country) {
             countryName.text = country.name
         }
     }
