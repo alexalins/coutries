@@ -33,7 +33,10 @@ class MainActivity : AppCompatActivity() {
 
     fun observeViewModel() {
         this.viewModel.countries.observe(this, Observer { coutries ->
-            coutries?.let { this.countriesAdapter.updateCountries(it) }
+            coutries?.let {
+                countriesList.visibility = View.VISIBLE
+                this.countriesAdapter.updateCountries(it)
+            }
         })
         this.viewModel.countryLoadError.observe(this, Observer { isError ->
             isError?.let { list_error.visibility = if(it) View.VISIBLE else View.GONE }
