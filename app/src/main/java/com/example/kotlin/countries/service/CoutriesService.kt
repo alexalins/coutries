@@ -8,7 +8,7 @@ import javax.inject.Inject
 class CoutriesService {
 
     @Inject
-    lateinit var  api: CountriesApi
+    lateinit var api: CountriesApi
 
     init {
         DaggerApiComponent.create().inject(this)

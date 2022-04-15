@@ -1,6 +1,7 @@
 package com.example.kotlin.countries.di
 
 import com.example.kotlin.countries.service.CountriesApi
+import com.example.kotlin.countries.service.CoutriesService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -13,11 +14,16 @@ class ApiModule {
     private val BASE_URL = "https://raw.githubusercontent.com/"
 
     @Provides
-    fun provideCouintriesApi(): CountriesApi {
+    fun provideCountriesApi(): CountriesApi {
         return  Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
             .create(CountriesApi::class.java)
+    }
+
+    @Provides
+    fun provideCoutriesService(): CoutriesService {
+        return CoutriesService()
     }
 }

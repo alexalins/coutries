@@ -2,21 +2,29 @@ package com.example.kotlin.countries.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.kotlin.countries.di.DaggerApiComponent
 import com.example.kotlin.countries.model.Country
 import com.example.kotlin.countries.service.CoutriesService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 class ListViewModel: ViewModel() {
 
-    private val coutriesService = CoutriesService()
+    @Inject
+    lateinit var coutriesService: CoutriesService
+
     private val disposable = CompositeDisposable()
 
     val countries = MutableLiveData<List<Country>>()
     val countryLoadError = MutableLiveData<Boolean>()
     val loading = MutableLiveData<Boolean>()
+
+    init {
+        DaggerApiComponent.create().inject(this)
+    }
 
     fun refresh() {
         this.fetchCountries()
